@@ -275,7 +275,7 @@ fi
 unzip shimboot_octopus.zip
 SHIMBOOT_LOOPBACK_DEVICE=$(sudo losetup -fP --show shimboot_octopus.bin)
 sudo mkdir -p /mnt/shimboot_rootfs
-sudo mount /dev/${SHIMBOOT_LOOPBACK_DEVICE}p4 /mnt/shimboot_rootfs
+sudo mount ${SHIMBOOT_LOOPBACK_DEVICE}p4 /mnt/shimboot_rootfs
 sudo rm -rf /mnt/shimboot_rootfs/*
 sudo cp -rf $ROOT/* /mnt/shimboot_rootfs
 echo "rootfs が ${SHIMBOOT_LOOPBACK_DEVICE}p4 に正常に書き込まれました。"
