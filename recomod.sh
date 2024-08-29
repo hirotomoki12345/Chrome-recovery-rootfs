@@ -268,7 +268,7 @@ EOF
 }
 patch_root_minimal() {
 lsblk
-tar -cvf rootfs.tar -C "$ROOT" .
+#tar -cvf rootfs.tar -C "$ROOT" .
 if [ ! -f shimboot_octopus.zip ]; then
   wget -O shimboot_octopus.zip https://dl.darkn.bio/api/raw?path=/Shimboot/shimboot_octopus.zip
 fi
