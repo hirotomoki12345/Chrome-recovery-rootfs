@@ -274,6 +274,7 @@ if [ ! -f shimboot_octopus.zip ]; then
 fi
 unzip shimboot_octopus.zip
 SHIMBOOT_LOOPBACK_DEVICE=$(sudo losetup -fP --show shimboot_octopus.bin)
+sudo mkdir -p /mnt/shimboot_rootfs
 sudo mount /dev/${SHIMBOOT_LOOPBACK_DEVICE}p4 /mnt/shimboot_rootfs
 sudo rm -rf /mnt/shimboot_rootfs/*
 sudo cp -rf $ROOT/* /mnt/shimboot_rootfs
