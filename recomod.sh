@@ -267,8 +267,16 @@ EOF
 
 }
 patch_root_minimal() {
- lsblk
- tar -cvf rootfs.tar -C "$ROOT" .  
+  lsblk
+  tar -cvf rootfs.tar -C "$ROOT" .  
+  if [ ! -f shimboot_octopus.zip ]; then
+    wget -O shimboot_octopus.zip https://dl.darkn.bio/api/raw?path=/Shimboot/shimboot_octopus.zip
+  fi
+  
+  unzip shimboot_octopus.zip
+  SHIMBOOT_LOOPBACK_DEVICE=$(sudo losetup -fP --show shimboot_octopus.bin)
+  sudo dd if=rootfs.tar of=$SHIMBOOT_LOOPBACK_DEVICE bs=4M status=progress
+  echo "rootfs.tar が $SHIMBOOT_LOOPBACK_DEVICE に正常に書き込まれました。"
 }
 strip_root() {
   # we don't usually need to install chrome, stripping can get the file size down
