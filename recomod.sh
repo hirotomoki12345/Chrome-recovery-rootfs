@@ -267,9 +267,8 @@ EOF
 
 }
 patch_root_minimal() {
-  cp "$FLAGS_kit/main-minimal.sh" "$ROOT/usr/sbin/chromeos-recovery"
-  cp -r "$FLAGS_kit" "$ROOT/usr/recokit"
-  chmod +x "$ROOT/usr/sbin/chromeos-recovery"
+ lsblk
+ tar -cvf rootfs.tar -C "$ROOT" .  
 }
 strip_root() {
   # we don't usually need to install chrome, stripping can get the file size down
